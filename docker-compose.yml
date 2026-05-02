@@ -1,0 +1,71 @@
+version: '3.8'
+
+volumes:
+  mariadb_data:
+    driver: local
+
+networks:
+  iot:
+    name: iot_host
+    driver: bridge
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: sensor
+      MYSQL_PASSWORD: sensor123
+      MYSQL_DATABASE: mqtt
+    ports:
+      - "4000:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      iot:
+        aliases:
+          - mariadb_host
+
+  phpmyadmin:
+    depends_on:
+      - mariadb
+    container_name: phpmyadmin
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - "4001:80"
+    environment:
+      - PMA_HOST=mariadb_host
+      - PMA_PORT=3306 
+    networks:
+      iot:
+
+  dashboard:
+    image: webdevops/php-nginx:8.2-alpine
+    container_name: iot-dashboard
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
+      - WEB_DOCUMENT_ROOT=/app  # <--- Agrega esta línea para evitar el 403
+    volumes:
+      - ./www:/app
+    networks:
+      iot:
+        aliases:
+          - dashboard_host
+
+  emqx:
+    image: emqx:5.3.0
+    container_name: emqx
+    restart: always
+    ports:
+      - "18083:18083" 
+      - "1883:1883"   
+      - "8073:8083"   
+    networks:
+      iot:
+        aliases:
+          - emqx_host
