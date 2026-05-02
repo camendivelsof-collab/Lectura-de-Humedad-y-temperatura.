@@ -1,8 +1,9 @@
 # Lectura-de-Humedad-y-temperatura.
-Se hace dearrollo de una API Full REST aplicada a IOT tomando lecturas de Humedad y temperatura, la idea es hacer que las personas interesadas en realizar proyectos de IoT tenga una forma facil de implementar desde la lectura de datos en Arduino hasta la visualización en una Pagina Webb, el acceso a una base de datos y puedan descargar sus archivos
+Se hace dearrollo de una API Full REST aplicada a IOT tomando lecturas de Humedad y temperatura, la idea es hacer que las personas interesadas en realizar proyectos de IoT tenga una forma facil de implementar desde la lectura de datos en Arduino hasta la visualización en una Pagina Webb, el acceso a una base de datos y puedan descargar sus archivos.
+
 🛰️ Estación Climática IoT Arbeláez
 
-Este proyecto consiste en un sistema de monitoreo meteorológico de grado profesional que captura temperatura y humedad mediante un sensor DHT11 conectado a un ESP32, almacena los datos en una base de datos MariaDB y los visualiza en un Dashboard Web dinámico en tiempo real.
+Este proyecto consiste en un sistema de monitoreo meteorológico que captura temperatura y humedad mediante un sensor DHT11 conectado a un ESP32, almacena los datos en una base de datos MariaDB y los visualiza en un Dashboard Web dinámico en tiempo real.
 
 🚀 Características principales
 
