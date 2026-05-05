@@ -18,8 +18,8 @@
 #include <ArduinoJson.h>
 
 // --- CONFIGURACIÓN DE RED ---
-const char* ssid = "ELKIN";           
-const char* password = "camilo29";   
+const char* ssid = "Nombre_red_wifi";           
+const char* password = "Clave_red_wiFI";   
 
 // --- CONFIGURACIÓN MQTT ---
 const char* mqtt_server = "192.168.101.12"; // Tu IP de Host
